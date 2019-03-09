@@ -2,3 +2,8 @@
 @import 'defaults';
 @import 'App';
 @import '~leaflet/dist/leaflet.css';
+
+.leaflet-container {
+  height: 400px;
+  width: 800px;
+}
