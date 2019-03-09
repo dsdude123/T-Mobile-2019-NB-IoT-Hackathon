@@ -74,7 +74,9 @@
         return values
       }, {})
       for (const param of params) {
-
+        let node = document.createElement('li')
+        node.innerText = param.toString()
+        document.querySelector('#query-params').appendChild(node)
       }
   </script>
   <!-- Opacity Toggler - reveals clickjacking iframes -->
