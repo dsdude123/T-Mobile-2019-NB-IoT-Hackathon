@@ -21,23 +21,37 @@ module.exports = (server, config) => {
 
   // LOAD MODELS
   const models = require('../models')
+
   // SEED IF NECESSARY (and a seed method has been added)
   if (seed) {
-    Object.keys(models)
-      .map(key => models[key])
-      .filter(Model => typeof Model.seed === 'function')
-      .forEach(Model => {
+  // if (true) {
+    // (Synchronous) Map of mongoose ids per each model (good for picking refs)
+    const ids = Object.keys(models).reduce(
+      (acc, el) => {
+          acc[el] = []
+          for (let i = 0; i < seed; i++) {
+            acc[el].push(new mongoose.Types.ObjectId())
+          }
+          return acc
+        },
+      {}
+    )
+    // (async) Iterate over models and create seeds
+    for (model of Object.keys(models)) {
+      const Model = models[model]
+      if (typeof Model.seed === 'function') {
         Model.count().exec((err, count) => {
           if (err) {
             console.warn(`Unable to count ${Model.modelName.toLowerCase()} schema:`, err)
           } else if (count < seed) {
-            console.log(`SEED: Generating ${count < seed} documents for ${Model.modelName.toLowerCase()}`)
-            let fakes = []
+          // } else if (true) {
+            console.log(`SEED: Generating ${seed} documents for ${Model.modelName.toLowerCase()}`)
             for (let i = 0; i < seed; i++) {
-              Model.seed(fakes, config)
+              Model.seed(ids, i)
             }
           }
         })
-      })
+      }
+    }
   }
 }

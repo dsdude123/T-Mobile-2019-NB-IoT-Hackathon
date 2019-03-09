@@ -3,6 +3,9 @@ const { Types } = mongoose.Schema
 const faker = require('faker')
 
 const Schema = new mongoose.Schema({
+  // FOREIGN KEY
+  device: { type: Types.ObjectId, ref: 'Device', required: true },
+  // 
   timestamp: { type: Date, default: Date.now() },
   latitude: { type: Number, required: true },
   longitude: { type: Number, required: true },
@@ -17,8 +20,10 @@ const Model = mongoose.model('Checkin', Schema, 'Checkin')
 
 module.exports = Model
 
-module.exports.seed = (fakes, config) => {
-  Model.create({
+module.exports.seed = (ids, i) => {
+  const Seed = new Model({
+    _id: ids['Checkin'][i],
+    device: ids['Device'][i],
     latitude: faker.random.number(),
     longitude: faker.random.number(),
     elevation: faker.random.boolean ? faker.random.number() : null,
@@ -27,4 +32,5 @@ module.exports.seed = (fakes, config) => {
     humidity: faker.random.boolean ? faker.random.number() : null,
     tilt: null
   })
+  Model.create(Seed)
 }

@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.js",
-    "start": "cross-env NODE_ENV=production node src/index.js"
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "deploy": "cross-env NODE_ENV=production forever start src/index.js"
   },
   "dependencies": {
     "apicache": "^1.2.1",
