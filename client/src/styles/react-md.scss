@@ -1,0 +1,17 @@
+@import '~react-md/src/scss/react-md';
+
+/*
+REACT-MD THEME:
+https://react-md.mlaursen.com/customization/themes
+https://react-md.mlaursen.com/customization/theme-builder
+https://react-md.mlaursen.com/sassdoc/
+*/
+
+// T-Mo colors
+$md-light-theme: true; // optional for light theme
+$md-primary-color: #ff009f;
+$md-secondary-color: #d3d3d3;
+//  Disable material design color compliance warnings
+$md-colors-warn-md: false;
+
+@include react-md-everything;
