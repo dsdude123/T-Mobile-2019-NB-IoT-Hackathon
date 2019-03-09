@@ -2,6 +2,9 @@ const mongoose = require('mongoose')
 const { Types } = mongoose.Schema
 const faker = require('faker')
 const randomFloat = require('random-float')
+const Chance = require('chance')
+var chance = new Chance()
+// https://chancejs.com/basics/floating.html
 
 const Schema = new mongoose.Schema({
   // FOREIGN KEY
@@ -33,8 +36,8 @@ module.exports.seed = (ids, i) => {
     48.101399, -122.889235
     47.080475, -121.596835
     */
-    latitude: randomFloat(47.080475, 48.101399),
-    longitude: randomFloat(122.889235, -121.596835),
+    latitude: chance.floating({ min: 47.080475, max: 48.101399, fixed: 6 }),
+    longitude: chance.floating({ min: -122.889235, max: -121.596835, fixed: 6 }),
     // latitude: faker.random.number({ min: -90, max: 90 }),
     // longitude: faker.random.number({ min: -180, max: 180 }),
     elevation: faker.random.boolean ? faker.random.number({ min: -1000, max: 6000 }) : null,

@@ -15,13 +15,18 @@ const Model = mongoose.model('Device', Schema, 'Device')
 module.exports = Model
 
 module.exports.seed = (ids, i) => {
-  let checkins = []
-  for (let j = 0; j <= i; j++) {
-    checkins.push(ids['Checkin'][j])
-  }
+  // let checkins = []
+  // for (let j = 0; j <= i; j++) {
+  //   checkins.push(ids['Checkin'][j])
+  // }
   const Seed = new Model({
     _id: ids['Device'][i],
-    checkins,
+    checkins: [
+      ids['Checkin'][faker.random.number({ min: 0, max: i })],
+      ids['Checkin'][faker.random.number({ min: 0, max: i })],
+      ids['Checkin'][faker.random.number({ min: 0, max: i })],
+      ids['Checkin'][faker.random.number({ min: 0, max: i })]
+    ],
     name: faker.name.jobDescriptor(),
     description: faker.lorem.sentence()
   })

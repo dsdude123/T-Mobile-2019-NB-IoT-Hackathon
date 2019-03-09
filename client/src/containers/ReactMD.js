@@ -7,7 +7,7 @@ export default class ReactMD extends React.Component {
     <ListItem
       key='health'
       primaryText='Overall Health'
-      secondaryText='10/50'
+      secondaryText='18 / 20 Devices OK'
       rightIcon={<FontIcon>timeline</FontIcon>}
     />,
     <ListItem
@@ -47,7 +47,7 @@ export default class ReactMD extends React.Component {
     return (
       <NavigationDrawer
         contentId='app'
-        toolbarTitle='T-Mobile IOT Hack - Device Monitor'
+        toolbarTitle='T-Mobile IOT Hack'
         drawerTitle='Status Report'
         mobileDrawerType={NavigationDrawer.DrawerTypes.TEMPORARY}
         tabletDrawerType={NavigationDrawer.DrawerTypes.FLOATING}

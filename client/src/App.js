@@ -50,7 +50,7 @@ class App extends Component {
             <section>
               <LeafletMap
                 center={position}
-                zoom={13}
+                zoom={14}
                 maxZoom={10}
                 attributionControl={true}
                 zoomControl={true}
@@ -63,11 +63,12 @@ class App extends Component {
                 <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
                 {items.map((item) => {
                   const recent = item.checkins[0] || {}
+                  const timestamp = new Date(recent.timestamp)
                   return (
                     <Marker key={item._id} position={[recent.latitude, recent.longitude]}>
                       <Popup>
-                        <h1>{item.name}</h1>
-                        Popup for any custom information.
+                        <h1>{`Device Name: "${item.name}"`}</h1>
+                        <p>{item.description || ' '}</p>
                         <ResponsiveContainer height={100}>
                           <LineChart data={item.checkins}
                           margin={{ top: 5, right: 30, left: 0, bottom: 5 }}>
@@ -80,7 +81,10 @@ class App extends Component {
                             <Line type="monotone" dataKey="humidity" stroke="#2779BD" />
                           </LineChart>
                         </ResponsiveContainer>
-                        <pre><code>{JSON.stringify(item)}</code></pre>
+                        <span>{`Last Checkin: `}
+                        <strong>{`${timestamp.toLocaleDateString('en-US')} ${timestamp.toLocaleTimeString('en-US')}`}</strong>
+                        </span>
+                        {/* <pre><code>{JSON.stringify(item)}</code></pre> */}
                       </Popup>
                     </Marker>
                   )
