@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 // import worldGeoJSON from 'geojson-world-map';
 
-import { ReactMD, StateManagement } from './containers'
+import { ReactMD } from './containers'
 
 
 
@@ -12,10 +12,11 @@ const position = ['47.6062', '-122.332'] // LatxLong,
 class App extends Component {
 
   componentDidMount() {
-    fetch("40.85.145.54:4000/api/v1/device?populate=checkins")
+    fetch(`http://40.85.145.54:4000/api/v1/device?populate={"path":"checkins","sort":"-timestamp"}`)
       .then(res => res.json())
       .then(
         (result) => {
+          console.warn('DEVICES:', result)
           this.setState({
             isLoaded: true,
             items: result.items
@@ -38,31 +39,29 @@ class App extends Component {
     return (
       <div className="App">
         <ReactMD>
-          <StateManagement>
-            <article>
-              <section>
-                <LeafletMap
-                  center={position}
-                  zoom={13}
-                  maxZoom={10}
-                  attributionControl={true}
-                  zoomControl={true}
-                  doubleClickZoom={true}
-                  scrollWheelZoom={true}
-                  dragging={true}
-                  animate={true}
-                  easeLinearity={0.35}
-                >
-                  <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
-                  <Marker position={[50, 10]}>
-                    <Popup>
-                      Popup for any custom information.
-                    </Popup>
-                  </Marker>
-                </LeafletMap>
-              </section>
-            </article>
-          </StateManagement>
+          <article>
+            <section>
+              <LeafletMap
+                center={position}
+                zoom={13}
+                maxZoom={10}
+                attributionControl={true}
+                zoomControl={true}
+                doubleClickZoom={true}
+                scrollWheelZoom={true}
+                dragging={true}
+                animate={true}
+                easeLinearity={0.35}
+              >
+                <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+                <Marker position={[50, 10]}>
+                  <Popup>
+                    Popup for any custom information.
+                  </Popup>
+                </Marker>
+              </LeafletMap>
+            </section>
+          </article>
         </ReactMD>
       </div>
     );
