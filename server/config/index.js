@@ -5,7 +5,7 @@ module.exports = {
   ports: {
     https: 443,
     http: 80,
-    dev: 3000
+    dev: 4000
   },
   api: {
     prefix: 'api',
