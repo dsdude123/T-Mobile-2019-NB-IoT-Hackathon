@@ -1,8 +1,8 @@
 const REST = require('./REST')
-const { Config } = require('../models')
+const { Foobar } = require('../models')
 
-export default class Configs extends REST {
+module.exports = class Foobars extends REST {
   constructor () {
-    super(Config)
+    super(Foobar)
   }
 }
