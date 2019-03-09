@@ -1,0 +1,33 @@
+{
+  "name": "tmobile-hackathon-server",
+  "description": "Backend",
+  "repository": "https://github.com/dsdude123/T-Mobile-2019-NB-IoT-Hackathon",
+  "version": "7.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js"
+  },
+  "dependencies": {
+    "apicache": "^1.2.1",
+    "auto-bind": "^1.2.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "helmet": "^3.12.1",
+    "lodash": "^4.17.11",
+    "lorem-ipsum": "^1.0.6",
+    "method-override": "^2.3.10",
+    "morgan": "^1.9.1",
+    "openssl-self-signed-certificate": "^1.1.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "nodemon": "^1.12.1"
+  }
+}
