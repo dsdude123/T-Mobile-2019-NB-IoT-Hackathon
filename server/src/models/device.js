@@ -17,7 +17,7 @@ module.exports = Model
 module.exports.seed = (ids, i) => {
   const Seed = new Model({
     _id: ids['Device'][i],
-    checkins: [ids['Checkin'][i], ids['Checkin'][i]],
+    checkins: [ids['Checkin'][i], ids['Checkin'][ i <= 0 ? i+1 : i-1]],
     name: faker.name.jobDescriptor(),
     description: faker.lorem.sentence()
   })
