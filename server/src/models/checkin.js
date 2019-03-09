@@ -24,12 +24,12 @@ module.exports.seed = (ids, i) => {
   const Seed = new Model({
     _id: ids['Checkin'][i],
     device: ids['Device'][i],
-    latitude: faker.random.number(),
-    longitude: faker.random.number(),
-    elevation: faker.random.boolean ? faker.random.number() : null,
-    status: faker.random.boolean ? 'OK' : 'FAIL',
-    temperature: faker.random.boolean ? faker.random.number() : null,
-    humidity: faker.random.boolean ? faker.random.number() : null,
+    latitude: faker.random.number({ min: -90, max: 90 }),
+    longitude: faker.random.number({ min: -180, max: 180 }),
+    elevation: faker.random.boolean ? faker.random.number({ min: -1000, max: 6000 }) : null,
+    status: faker.random.arrayElement(['OK', 'FAIL']),
+    temperature: faker.random.boolean ? faker.random.number({ min: -20, max: 80 }) : null,
+    humidity: faker.random.boolean ? faker.random.number({ min: 0, max: 100 }) : null,
     tilt: null
   })
   Model.create(Seed)
