@@ -24,6 +24,7 @@ module.exports.seed = (ids, i) => {
   const Seed = new Model({
     _id: ids['Checkin'][i],
     device: ids['Device'][i],
+    timestamp: faker.date.recent(14),
     latitude: faker.random.number({ min: -90, max: 90 }),
     longitude: faker.random.number({ min: -180, max: 180 }),
     elevation: faker.random.boolean ? faker.random.number({ min: -1000, max: 6000 }) : null,
