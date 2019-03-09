@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1.0'/>
+  <!-- Metadata -->
+  <meta name='author' content='Ryan Keller'>
+  <meta name='description' content='INFO415 - Spring 2018 - Andrew McKenna'>
+  <title>Scan Confirmation | IoT Hack</title>
+  <!-- CDN Styles -->
+  <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css'>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- Sticky Footer / Style Tweaks -->
+  <style>
+    body {
+      background-color: #cfd8dc;
+    }
+    #success-icon i {
+      margin: auto;
+      font-size: 300px;
+      color: green;
+      /* background-color: white; */
+    }
+  </style>
+</head>
+<body>
+  <nav class='black lighten-2' role='navigation'>
+    <div class='nav-wrapper container'>
+      <a href='https://devpost.com/software/chain-check' class='brand-logo'>Confirmation</a>
+      <ul id='nav-mobile' class='right hide-on-med-and-down'>
+        <li><a href='https://github.com/dsdude123/T-Mobile-2019-NB-IoT-Hackathon/'><i class='material-icons left'>code</i>GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id='index-banner' class='section no-pad-bot'>
+    <div class='row'>
+      <div class='center-align'>
+        <h1 id='success-icon'><i class="far fa-check-circle"></i></h1>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class='row center'>
+      <div class='col s12 m6 l4 offset-m3 offset-l4'>
+        <div class='card pink accent-2'>
+          <div class='card-content white-text'>
+            <span class='card-title'>Success!</span>
+            <p>Item scanned successfully!</p>
+            <ul id='query-params'></ul>
+         </div>
+         <div class='card-action grey darken-4'>
+           <label>
+             <input type='checkbox' />
+             <span>Confirm</span>
+           </label>
+          </div>
+        </div>
+        </div>
+      </div>
+  </footer>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js'></script>
+  <!-- Opacity Toggler - reveals clickjacking iframes -->
+  <script src='./opacity.js'></script>
+
+  </body>
+</html>
