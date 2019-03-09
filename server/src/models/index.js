@@ -1,3 +1,4 @@
 module.exports = {
-  Foobar: require('./foobar')
+  Device: require('./device'),
+  Checkin: require('./checkin')
 }

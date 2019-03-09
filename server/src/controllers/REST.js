@@ -1,6 +1,4 @@
 const restify = require('express-restify-mongoose')
-// const _ = require('lodash')
-
 const { Router } = require('express')
 
 module.exports = class Rest {
@@ -10,7 +8,7 @@ module.exports = class Rest {
     //  express-restify-mongoose configurations - common to all controllers
     this.config = {
       prefix: '',
-      version: '/v2',
+      version: '',
       name: this.model.modelName.toLowerCase(),
       //  Disabling these allows middleware to be called
       access: (req) => 'private',
@@ -21,8 +19,7 @@ module.exports = class Rest {
     }
     //  Middleware = override this!
     this.middleware = { ...this.config }
-  }
-  API () {
+    // Create route using restify, return said router from constructor
     const router = new Router()
     restify.serve(router, this.model, this.middleware)
     console.log(`REST: Instantiated controller: ${this.config.name}`)
