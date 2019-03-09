@@ -11,6 +11,10 @@ const position = ['47.6062', '-122.332'] // LatxLong,
 
 class App extends Component {
 
+  state = {
+    items: []
+  }
+
   componentDidMount() {
     fetch(`http://40.85.145.54:4000/api/v1/device?populate={"path":"checkins","sort":"-timestamp"}`)
       .then(res => res.json())
@@ -19,7 +23,7 @@ class App extends Component {
           console.warn('DEVICES:', result)
           this.setState({
             isLoaded: true,
-            items: result.items
+            items: result
           });
         },
         // Note: it's important to handle errors here
@@ -36,6 +40,7 @@ class App extends Component {
   }
 
   render() {
+    const { items } = this.state
     return (
       <div className="App">
         <ReactMD>
@@ -54,6 +59,17 @@ class App extends Component {
                 easeLinearity={0.35}
               >
                 <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
+                {items.map((item) => {
+                  const recent = item.checkins[0] || {}
+                  return (
+                    <Marker key={item._id} position={[recent.latitude, recent.longitude]}>
+                      <Popup>
+                        Popup for any custom information.
+                        <pre><code>{JSON.stringify(item)}</code></pre>
+                      </Popup>
+                    </Marker>
+                  )
+                })}
                 <Marker position={[50, 10]}>
                   <Popup>
                     Popup for any custom information.
