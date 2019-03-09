@@ -49,5 +49,4 @@ const HTTPS = (server, config) => {
 /*
 EXPORTS:
 */
-// module.exports = process.env.NODE_ENV === 'development' ? HTTP : HTTPS
-module.exports = HTTP
+module.exports = process.env.NODE_ENV === 'development' ? HTTP : HTTPS
