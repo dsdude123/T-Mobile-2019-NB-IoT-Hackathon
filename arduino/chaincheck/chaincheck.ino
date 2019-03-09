@@ -144,9 +144,18 @@ void loop() {
   char command[outgoinginfo.length()+1];
   outgoinginfo.toCharArray(command,outgoinginfo.length()+1);
   LOG(L_INFO,"Outgoing data: [%s]\r\n",command);
-  sendCommand(command);
-  // The Breakout SDK checking things and doing the work
-  breakout->spin();
+  if(breakout->isPowered()){
+    strip.WS2812SetRGB(0, 0x00, 0x40, 0x00);
+    strip.WS2812Send();
+    sendCommand(command);
+    // The Breakout SDK checking things and doing the work
+    breakout->spin();   
+  } else {
+    LOG(L_WARN, "Modem is powered down. Data not sent.\r\n");
+    strip.WS2812SetRGB(0, 0x20, 0x20, 0x00);
+    strip.WS2812Send();
+  }
+
 
   delay(10000);
 }
