@@ -8,6 +8,30 @@ import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 const position = ['47.6062', '-122.332'] // LatxLong, 
 
 class App extends Component {
+
+  componentDidMount() {
+    fetch("40.85.145.54:4000/api/v1/device?populate=checkins")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            items: result.items
+          });
+        },
+        // Note: it's important to handle errors here
+        // instead of a catch() block so that we don't swallow
+        // exceptions from actual bugs in components.
+        (error) => {
+          console.log(error);
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
   render() {
     return (
       <div className="App">
