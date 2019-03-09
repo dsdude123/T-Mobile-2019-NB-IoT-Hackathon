@@ -52,18 +52,31 @@
             <p>Item scanned successfully!</p>
             <ul id='query-params'></ul>
          </div>
-         <div class='card-action grey darken-4'>
+         <!-- <div class='card-action grey darken-4'>
            <label>
              <input type='checkbox' />
              <span>Confirm</span>
            </label>
-          </div>
+          </div> -->
         </div>
         </div>
       </div>
   </footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js'></script>
+  <script>
+    const params = decodeURI(window.location.search)
+      .replace('?', '')
+      .split('&')
+      .map(param => param.split('='))
+      .reduce((values, [ key, value ]) => {
+        values[ key ] = value
+        return values
+      }, {})
+      for (const param of params) {
+
+      }
+  </script>
   <!-- Opacity Toggler - reveals clickjacking iframes -->
   <script src='./opacity.js'></script>
 
