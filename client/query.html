@@ -50,6 +50,7 @@
           <div class='card-content white-text'>
             <span class='card-title'>Success!</span>
             <p>Item scanned successfully!</p>
+            <hr/>
             <ul id='query-params'></ul>
          </div>
          <!-- <div class='card-action grey darken-4'>
@@ -73,14 +74,12 @@
         values[ key ] = value
         return values
       }, {})
-      for (const param of params) {
+      console.warn('PARAMs', params)
+      for (const key of Object.keys(params)) {
         let node = document.createElement('li')
-        node.innerText = param.toString()
+        node.innerHTML = `<h4>${key}: ${params[key]}</h4>`
         document.querySelector('#query-params').appendChild(node)
       }
   </script>
-  <!-- Opacity Toggler - reveals clickjacking iframes -->
-  <script src='./opacity.js'></script>
-
   </body>
 </html>
