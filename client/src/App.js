@@ -1,35 +1,21 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+// import worldGeoJSON from 'geojson-world-map';
 
 
 
-const position = [51.505, -0.09]
+// const position = [51.505, -0.09]
+const position = ['47.6062', '-122.332'] // LatxLong, 
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header> */}
         <article>
           <section>
             <LeafletMap
-              center={[50, 10]}
-              zoom={6}
+              center={position}
+              zoom={13}
               maxZoom={10}
               attributionControl={true}
               zoomControl={true}
@@ -39,9 +25,7 @@ class App extends Component {
               animate={true}
               easeLinearity={0.35}
             >
-              <TileLayer
-                url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-              />
+              <TileLayer url='http://{s}.tile.osm.org/{z}/{x}/{y}.png' />
               <Marker position={[50, 10]}>
                 <Popup>
                   Popup for any custom information.
