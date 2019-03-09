@@ -14,5 +14,6 @@ module.exports = {
   cookie: {
     secret: 'plz-invite-keller-onsite'
   },
-  db: 'mongodb://rykeller:!MUNC7YSzawce6-@iothack-sp2019-shard-00-00-saf07.mongodb.net:27017,iothack-sp2019-shard-00-01-saf07.mongodb.net:27017,iothack-sp2019-shard-00-02-saf07.mongodb.net:27017/DEV?ssl=true&replicaSet=IOTHack-SP2019-shard-0&authSource=admin&retryWrites=true'
+  db: 'mongodb://rykeller:!MUNC7YSzawce6-@iothack-sp2019-shard-00-00-saf07.mongodb.net:27017,iothack-sp2019-shard-00-01-saf07.mongodb.net:27017,iothack-sp2019-shard-00-02-saf07.mongodb.net:27017/DEV?ssl=true&replicaSet=IOTHack-SP2019-shard-0&authSource=admin&retryWrites=true',
+  seed: 20
 }
