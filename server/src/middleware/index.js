@@ -1,4 +1,4 @@
 module.exports = [
-  require('./Errors'),
-  require('./Cache')
+  require('./Errors')
+  // require('./Cache')
 ]
